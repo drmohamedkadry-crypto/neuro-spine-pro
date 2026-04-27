@@ -1,61 +1,69 @@
+"use client";
 import Link from "next/link";
-import { ArrowRight, Calendar, Stethoscope, Star, Play, ChevronRight, MessageCircle, Phone } from "lucide-react";
-import { SERVICES, TESTIMONIALS, BLOG_POSTS } from "@/lib/data";
+import { ArrowRight, Calendar, Stethoscope, Star, Play, MessageCircle, Phone } from "lucide-react";
+import { useLang } from "@/lib/LanguageContext";
 
 export default function HomePage() {
+  const { tr } = useLang();
+  const h = tr.home;
+  const n = tr.nav;
+
+  const whyItems = [
+    { icon: "🏆", title: h.exp, desc: h.expDesc },
+    { icon: "👥", title: h.surgeries, desc: h.surgeriesDesc },
+    { icon: "🩺", title: h.minimally, desc: h.minimallyDesc },
+    { icon: "❤️", title: h.patient, desc: h.patientDesc },
+  ];
+
+  const services = [
+    { title: tr.nav.home === "Home" ? "Cervical Spine Disorders" : "اضطرابات عنق الرحم", desc: tr.nav.home === "Home" ? "Advanced treatment for neck pain, herniated discs, and cervical spine conditions" : "علاج متقدم لآلام الرقبة وانزلاق الغضاريف وحالات العمود الفقري العنقي", img: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80" },
+    { title: tr.nav.home === "Home" ? "Lumbar Spine Care" : "رعاية العمود الفقري القطني", desc: tr.nav.home === "Home" ? "Comprehensive treatment for lower back pain, sciatica, and lumbar disc problems" : "علاج شامل لآلام أسفل الظهر والعرق النسا ومشكلات الغضاريف القطنية", img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80" },
+    { title: tr.nav.home === "Home" ? "Minimally Invasive Surgery" : "الجراحة الطفيفة التوغل", desc: tr.nav.home === "Home" ? "Endoscopic and microscopic procedures for faster recovery and better outcomes" : "إجراءات بالمنظار والمجهر للتعافي السريع ونتائج أفضل", img: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=600&q=80" },
+  ];
+
+  const testimonials = [
+    { text: tr.nav.home === "Home" ? "Dr. Howdy's expertise and compassionate care changed my life. After years of chronic back pain, his minimally invasive surgery gave me my mobility back." : "غيّرت خبرة الدكتور هويدي ورعايته المتعاطفة حياتي. بعد سنوات من آلام الظهر المزمنة، أعادت لي جراحته الطفيفة التوغل قدرتي على الحركة.", name: "Sarah M.", condition: tr.nav.home === "Home" ? "Lumbar Disc Surgery" : "جراحة الغضروف القطني" },
+    { text: tr.nav.home === "Home" ? "The professionalism and advanced techniques used by Professor Howdy exceeded all expectations. My cervical spine surgery was a complete success." : "تجاوز احترافية الأستاذ الدكتور هويدي وتقنياته المتقدمة كل التوقعات. كانت عملية عنق الرحم ناجحة تمامًا.", name: "Ahmed K.", condition: tr.nav.home === "Home" ? "Cervical Spine Treatment" : "علاج العمود الفقري العنقي" },
+    { text: tr.nav.home === "Home" ? "From consultation to recovery, the entire team provided exceptional care. Dr. Howdy's expertise in endoscopic surgery made all the difference." : "من الاستشارة حتى التعافي، قدّم الفريق بأكمله رعاية استثنائية. خبرة الدكتور هويدي في جراحة المنظار أحدثت الفارق.", name: "Fatima A.", condition: tr.nav.home === "Home" ? "Endoscopic Surgery" : "الجراحة بالمنظار" },
+  ];
+
   return (
     <div className="pt-[72px]">
 
-      {/* ── HERO ── Full-width surgical image + navy overlay */}
+      {/* HERO */}
       <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center overflow-hidden">
-        <div className="absolute inset-0"
-          style={{backgroundImage:"url('/hero-surgeon.png')",backgroundSize:"cover",backgroundPosition:"center top"}}
-        />
+        <div className="absolute inset-0" style={{backgroundImage:"url('/hero-surgeon.png')",backgroundSize:"cover",backgroundPosition:"center top"}} />
         <div className="absolute inset-0" style={{background:"linear-gradient(to bottom, rgba(15,32,53,0.45) 0%, rgba(15,32,53,0.65) 100%)"}} />
-
         <div className="relative z-10 max-w-4xl mx-auto px-6 py-20">
-          <p className="text-white text-sm font-semibold tracking-widest mb-4">
-            Professor Dr. Mohamed Sediq Howdy · Leading Neurosurgery & Spine Surgery Specialist at Cairo University · 32+ Years of Excellence in Minimally Invasive Procedures and Patient-Centered Care.
-          </p>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-8">
-            Advancing Spinal Care
-          </h1>
+          <p className="text-white text-sm font-semibold tracking-widest mb-4">{h.badge}</p>
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-8">{h.hero}</h1>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/booking" className="flex items-center gap-2 text-white font-semibold px-7 py-3.5 rounded-lg text-base transition-colors" style={{backgroundColor:"#4db8c8"}}>
-              <Calendar size={18}/>Book Consultation
+              <Calendar size={18}/>{h.bookConsultation}
             </Link>
             <Link href="/services" className="flex items-center gap-2 text-white font-semibold px-7 py-3.5 rounded-lg text-base border-2 border-white/50 hover:border-white hover:bg-white/10 transition-colors">
-              <Stethoscope size={18}/>Services
+              <Stethoscope size={18}/>{h.services}
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── MISSION ── White bg, centered */}
+      {/* MISSION */}
       <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4" style={{color:"#1a3557"}}>Our Mission</h2>
-          <p className="text-gray-600 text-lg leading-relaxed">
-            To provide world-class neurosurgical and spinal care with compassion, precision, and innovation. We are committed to advancing medical knowledge while ensuring every patient receives personalized, evidence-based treatment in a supportive environment.
-          </p>
+          <h2 className="text-3xl font-bold mb-4" style={{color:"#1a3557"}}>{h.mission}</h2>
+          <p className="text-gray-600 text-lg leading-relaxed">{h.missionText}</p>
         </div>
       </section>
 
-      {/* ── WHY CHOOSE US ── Light gray bg, 4 icon cards */}
+      {/* WHY CHOOSE US */}
       <section className="py-16" style={{backgroundColor:"#f4f6f9"}}>
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12" style={{color:"#1a3557"}}>Why Choose Us</h2>
+          <h2 className="text-3xl font-bold text-center mb-12" style={{color:"#1a3557"}}>{h.whyUs}</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              {icon:"🏆", title:"32+ Years Experience", desc:"Decades of expertise in neurosurgery and spine care at Cairo University"},
-              {icon:"👥", title:"Thousands of Surgeries", desc:"Successfully performed complex spinal and neurological procedures"},
-              {icon:"🩺", title:"Minimally Invasive", desc:"Advanced endoscopic and microscopic surgical techniques"},
-              {icon:"❤️", title:"Patient-Centered", desc:"Compassionate care tailored to each patient's unique needs"},
-            ].map(item => (
+            {whyItems.map(item => (
               <div key={item.title} className="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl" style={{backgroundColor:"#e0f0f5"}}>
-                  {item.icon}
-                </div>
+                <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl" style={{backgroundColor:"#e0f0f5"}}>{item.icon}</div>
                 <h3 className="font-bold mb-2 text-sm" style={{color:"#1a3557"}}>{item.title}</h3>
                 <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
               </div>
@@ -64,48 +72,39 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── MEET THE PROFESSOR ── White, 2-col: text left + video right */}
+      {/* MEET THE PROFESSOR */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl font-bold leading-tight mb-4" style={{color:"#1a3557"}}>
-              Meet Professor Dr. Mohamed<br/>Sediq Howdy
-            </h2>
-            <p className="text-gray-600 leading-relaxed mb-5">
-              A distinguished professor at Cairo University and leading expert in neurosurgery and spine surgery. With over three decades of experience, Professor Howdy has dedicated his career to advancing spinal care through innovative techniques and compassionate patient treatment.
-            </p>
+            <h2 className="text-4xl font-bold leading-tight mb-4" style={{color:"#1a3557"}}>{h.meetTitle}</h2>
+            <p className="text-gray-600 leading-relaxed mb-5">{h.meetDesc}</p>
             <div className="flex flex-wrap gap-2 mb-6">
-              {["Cairo University Professor","Neurosurgery Specialist","Spine Surgery Expert"].map(t=>(
-                <span key={t} className="text-xs font-semibold px-4 py-1.5 rounded-full text-white" style={{backgroundColor:"#1a3557"}}>{t}</span>
+              {[h.badge1, h.badge2, h.badge3].map(b => (
+                <span key={b} className="text-xs font-semibold px-4 py-1.5 rounded-full text-white" style={{backgroundColor:"#1a3557"}}>{b}</span>
               ))}
             </div>
             <Link href="/about" className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-lg transition-colors" style={{backgroundColor:"#1a3557"}}>
-              Learn More About Dr. Howdy <ArrowRight size={16}/>
+              {h.learnMore} <ArrowRight size={16}/>
             </Link>
           </div>
-          {/* Video placeholder */}
           <div className="rounded-2xl overflow-hidden bg-gray-100 aspect-video flex flex-col items-center justify-center cursor-pointer group hover:bg-gray-200 transition-colors">
             <div className="w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" style={{backgroundColor:"#4db8c8"}}>
               <Play size={24} className="text-white ml-1"/>
             </div>
-            <p className="text-gray-500 text-sm mt-3">Watch Dr. Howdy's introduction video</p>
+            <p className="text-gray-500 text-sm mt-3">{h.watchVideo}</p>
           </div>
         </div>
       </section>
 
-      {/* ── SERVICES ── Light gray, image cards */}
+      {/* SERVICES */}
       <section className="py-16" style={{backgroundColor:"#f4f6f9"}}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-2" style={{color:"#1a3557"}}>Our Specialized Services</h2>
-            <p className="text-gray-500">Comprehensive neurosurgical and spinal care using the latest minimally invasive techniques</p>
+            <h2 className="text-3xl font-bold mb-2" style={{color:"#1a3557"}}>{h.ourServices}</h2>
+            <p className="text-gray-500">{h.ourServicesDesc}</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {[
-              {title:"Cervical Spine Disorders", desc:"Advanced treatment for neck pain, herniated discs, and cervical spine conditions", img:"https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80"},
-              {title:"Lumbar Spine Care", desc:"Comprehensive treatment for lower back pain, sciatica, and lumbar disc problems", img:"https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80"},
-              {title:"Minimally Invasive Surgery", desc:"Endoscopic and microscopic procedures for faster recovery and better outcomes", img:"https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=600&q=80"},
-            ].map(s => (
+            {services.map(s => (
               <div key={s.title} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
                 <div className="aspect-video overflow-hidden">
                   <img src={s.img} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
@@ -113,32 +112,28 @@ export default function HomePage() {
                 <div className="p-5">
                   <h3 className="font-bold text-base mb-2" style={{color:"#1a3557"}}>{s.title}</h3>
                   <p className="text-gray-500 text-sm mb-4 leading-relaxed">{s.desc}</p>
-                  <button className="text-sm font-medium border border-gray-200 px-4 py-1.5 rounded-lg hover:border-[#4db8c8] hover:text-[#4db8c8] transition-colors">Learn More</button>
+                  <button className="text-sm font-medium border border-gray-200 px-4 py-1.5 rounded-lg hover:border-[#4db8c8] hover:text-[#4db8c8] transition-colors">{tr.learnMore}</button>
                 </div>
               </div>
             ))}
           </div>
           <div className="text-center">
             <Link href="/services" className="inline-flex items-center gap-2 text-white font-semibold px-7 py-3 rounded-lg transition-colors" style={{backgroundColor:"#1a3557"}}>
-              View All Services <ArrowRight size={16}/>
+              {h.viewAll} <ArrowRight size={16}/>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ── White bg */}
+      {/* TESTIMONIALS */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-2" style={{color:"#1a3557"}}>Patient Success Stories</h2>
-            <p className="text-gray-500">Hear from patients whose lives have been transformed through our care</p>
+            <h2 className="text-3xl font-bold mb-2" style={{color:"#1a3557"}}>{h.testimonials}</h2>
+            <p className="text-gray-500">{h.testimonialsDesc}</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {[
-              {text:"Dr. Howdy's expertise and compassionate care changed my life. After years of chronic back pain, his minimally invasive surgery gave me my mobility back.", name:"Sarah M.", condition:"Lumbar Disc Surgery"},
-              {text:"The professionalism and advanced techniques used by Professor Howdy exceeded all expectations. My cervical spine surgery was a complete success.", name:"Ahmed K.", condition:"Cervical Spine Treatment"},
-              {text:"From consultation to recovery, the entire team provided exceptional care. Dr. Howdy's expertise in endoscopic surgery made all the difference.", name:"Fatima A.", condition:"Endoscopic Surgery"},
-            ].map(t => (
+            {testimonials.map(t => (
               <div key={t.name} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                 <div className="flex gap-0.5 mb-3">
                   {Array.from({length:5}).map((_,i)=><Star key={i} size={14} className="fill-amber-400 text-amber-400"/>)}
@@ -158,96 +153,26 @@ export default function HomePage() {
           </div>
           <div className="text-center">
             <Link href="/testimonials" className="inline-flex items-center gap-2 font-semibold px-7 py-3 rounded-lg border-2 transition-colors text-sm" style={{borderColor:"#1a3557",color:"#1a3557"}}>
-              Read More Testimonials <ArrowRight size={15}/>
+              {h.viewAllTest} <ArrowRight size={15}/>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── VIDEO LIBRARY ── Light gray */}
-      <section className="py-16" style={{backgroundColor:"#f4f6f9"}}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-2" style={{color:"#1a3557"}}>Educational Video Library</h2>
-            <p className="text-gray-500">Access our comprehensive collection of educational videos and TV interviews</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {[
-              {title:"Understanding Spine Health", type:"Educational"},
-              {title:"TV Interview: Modern Surgery", type:"TV Interview"},
-              {title:"Surgery Insights", type:"Surgery"},
-            ].map(v => (
-              <div key={v.title} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
-                <div className="aspect-video bg-gray-100 flex items-center justify-center relative">
-                  <div className="w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" style={{backgroundColor:"#4db8c8"}}>
-                    <Play size={22} className="text-white ml-1"/>
-                  </div>
-                  <span className="absolute top-3 right-3 text-xs font-medium px-2 py-1 rounded-full text-white" style={{backgroundColor:"#1a3557"}}>{v.type}</span>
-                </div>
-                <div className="p-4">
-                  <h4 className="font-semibold text-sm" style={{color:"#1a3557"}}>{v.title}</h4>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center">
-            <Link href="/videos" className="inline-flex items-center gap-2 text-white font-semibold px-7 py-3 rounded-lg transition-colors text-sm" style={{backgroundColor:"#1a3557"}}>
-              Explore Video Library <ArrowRight size={15}/>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── BLOG ── White bg, image cards */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-2" style={{color:"#1a3557"}}>Latest Insights</h2>
-            <p className="text-gray-500">Stay informed with our latest articles on spine health and treatment advances</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {[
-              {tag:"Education", tagColor:"#4db8c8", title:"5 Common Spine Surgery Myths Debunked", desc:"Separating fact from fiction about modern spine surgery techniques and recovery...", date:"March 15, 2024", img:"https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=600&q=80"},
-              {tag:"Symptoms", tagColor:"#f59e0b", title:"When Back Pain Requires Medical Attention", desc:"Understanding the warning signs that indicate you should seek professional help...", date:"March 10, 2024", img:"https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80"},
-              {tag:"Recovery", tagColor:"#10b981", title:"Optimizing Your Recovery After Spine Surgery", desc:"Essential tips and guidelines for a successful recovery journey...", date:"March 5, 2024", img:"https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&q=80"},
-            ].map(p => (
-              <div key={p.title} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow group cursor-pointer">
-                <div className="aspect-video overflow-hidden">
-                  <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-                </div>
-                <div className="p-5">
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full text-white inline-block mb-3" style={{backgroundColor:p.tagColor}}>{p.tag}</span>
-                  <h3 className="font-bold text-sm mb-2 leading-snug" style={{color:"#1a3557"}}>{p.title}</h3>
-                  <p className="text-gray-500 text-xs leading-relaxed mb-3">{p.desc}</p>
-                  <div className="text-gray-400 text-xs">{p.date}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center">
-            <Link href="/blog" className="inline-flex items-center gap-2 font-semibold px-7 py-3 rounded-lg border-2 transition-colors text-sm" style={{borderColor:"#1a3557",color:"#1a3557"}}>
-              Read More Articles <ArrowRight size={15}/>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA ── Navy background */}
+      {/* CTA */}
       <section className="py-20 text-center" style={{backgroundColor:"#1a3557"}}>
         <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Take the Next Step?</h2>
-          <p className="text-white/70 leading-relaxed mb-8">
-            Schedule your consultation today and discover how our advanced spinal care can help you return to the life you love. We offer both in-clinic and video consultations.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{h.ctaTitle}</h2>
+          <p className="text-white/70 leading-relaxed mb-8">{h.ctaDesc}</p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link href="/booking" className="flex items-center gap-2 text-white font-semibold px-7 py-3 rounded-lg transition-colors" style={{backgroundColor:"#4db8c8"}}>
-              <Calendar size={17}/>Book Online Consultation
+              <Calendar size={17}/>{h.bookAppt}
             </Link>
             <a href="tel:+201005568333" className="flex items-center gap-2 text-white font-semibold px-7 py-3 rounded-lg border-2 border-white/40 hover:border-white hover:bg-white/10 transition-colors">
-              <Phone size={16}/>Call Now
+              <Phone size={16}/>{h.callUs}
             </a>
             <a href="https://wa.me/201005568333" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-green-500 hover:bg-green-400 text-white font-semibold px-7 py-3 rounded-lg transition-colors">
-              <MessageCircle size={16}/>WhatsApp
+              <MessageCircle size={16}/>{n.whatsapp}
             </a>
           </div>
         </div>
