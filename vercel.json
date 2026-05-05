@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd mimo && npm install && npm run build",
+  "outputDirectory": "mimo/.next",
+  "framework": "nextjs",
+  "installCommand": "echo skip-root-install"
+}
