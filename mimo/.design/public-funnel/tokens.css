@@ -1,0 +1,181 @@
+/* Design Tokens — Neuro Spine Pro Public Funnel */
+
+:root {
+
+  /* ─── Color ─────────────────────────────────────────── */
+
+  /* Brand */
+  --color-brand-50:  #eef4fb;
+  --color-brand-100: #d5e5f5;
+  --color-brand-200: #aacbeb;
+  --color-brand-300: #7aaede;
+  --color-brand-400: #4e92d1;
+  --color-brand-500: #2575c4;  /* primary */
+  --color-brand-600: #1d5e9e;
+  --color-brand-700: #164878;
+  --color-brand-800: #0e3153;
+  --color-brand-900: #071b2e;
+
+  /* Accent — teal, used for CTAs */
+  --color-accent-400: #2bbfa8;
+  --color-accent-500: #1fa090;  /* primary CTA */
+  --color-accent-600: #168070;
+
+  /* Neutral */
+  --color-neutral-0:   #ffffff;
+  --color-neutral-50:  #f7f8fa;
+  --color-neutral-100: #eceef2;
+  --color-neutral-200: #d5d9e0;
+  --color-neutral-300: #b0b8c4;
+  --color-neutral-500: #6b7585;
+  --color-neutral-700: #3a4252;
+  --color-neutral-900: #161c27;
+
+  /* Semantic */
+  --color-success: #1e8c5a;
+  --color-warning: #d97706;
+  --color-error:   #c0392b;
+  --color-info:    var(--color-brand-500);
+
+  /* Surface */
+  --color-surface-default: var(--color-neutral-0);
+  --color-surface-subtle:  var(--color-neutral-50);
+  --color-surface-brand:   var(--color-brand-500);
+  --color-surface-dark:    var(--color-neutral-900);
+
+  /* Text */
+  --color-text-primary:   var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-500);
+  --color-text-inverse:   var(--color-neutral-0);
+  --color-text-brand:     var(--color-brand-600);
+  --color-text-link:      var(--color-brand-500);
+  --color-text-link-hover: var(--color-brand-700);
+
+  /* Border */
+  --color-border-default: var(--color-neutral-200);
+  --color-border-strong:  var(--color-neutral-300);
+  --color-border-brand:   var(--color-brand-400);
+  --color-border-focus:   var(--color-accent-500);
+
+
+  /* ─── Typography ────────────────────────────────────── */
+
+  --font-family-sans:  'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-family-serif: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-family-mono:  'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Scale (Major Third — 1.250) */
+  --font-size-xs:   0.64rem;   /* 10.2 px */
+  --font-size-sm:   0.8rem;    /* 12.8 px */
+  --font-size-base: 1rem;      /* 16 px   */
+  --font-size-md:   1.25rem;   /* 20 px   */
+  --font-size-lg:   1.563rem;  /* 25 px   */
+  --font-size-xl:   1.953rem;  /* 31 px   */
+  --font-size-2xl:  2.441rem;  /* 39 px   */
+  --font-size-3xl:  3.052rem;  /* 49 px   */
+  --font-size-4xl:  3.815rem;  /* 61 px   */
+
+  /* Weight */
+  --font-weight-regular: 400;
+  --font-weight-medium:  500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:    700;
+
+  /* Line height */
+  --line-height-tight:  1.2;
+  --line-height-snug:   1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Letter spacing */
+  --letter-spacing-tight:  -0.02em;
+  --letter-spacing-normal:  0em;
+  --letter-spacing-wide:    0.04em;
+  --letter-spacing-wider:   0.08em;
+
+
+  /* ─── Spacing ───────────────────────────────────────── */
+
+  /* 4-pt base grid */
+  --space-1:   0.25rem;  /*  4 px */
+  --space-2:   0.5rem;   /*  8 px */
+  --space-3:   0.75rem;  /* 12 px */
+  --space-4:   1rem;     /* 16 px */
+  --space-5:   1.25rem;  /* 20 px */
+  --space-6:   1.5rem;   /* 24 px */
+  --space-8:   2rem;     /* 32 px */
+  --space-10:  2.5rem;   /* 40 px */
+  --space-12:  3rem;     /* 48 px */
+  --space-16:  4rem;     /* 64 px */
+  --space-20:  5rem;     /* 80 px */
+  --space-24:  6rem;     /* 96 px */
+  --space-32:  8rem;     /* 128 px */
+
+
+  /* ─── Layout ────────────────────────────────────────── */
+
+  --layout-max-width:     1200px;
+  --layout-content-width: 720px;
+  --layout-columns:       12;
+  --layout-gutter:        var(--space-6);
+  --layout-margin:        var(--space-6);
+
+  /* Breakpoints (reference only — use in @media queries) */
+  /* sm: 480px | md: 768px | lg: 1024px | xl: 1280px     */
+
+
+  /* ─── Border Radius ─────────────────────────────────── */
+
+  --radius-sm:   0.25rem;  /*  4 px */
+  --radius-md:   0.5rem;   /*  8 px */
+  --radius-lg:   1rem;     /* 16 px */
+  --radius-xl:   1.5rem;   /* 24 px */
+  --radius-full: 9999px;
+
+
+  /* ─── Shadow ────────────────────────────────────────── */
+
+  --shadow-sm:  0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md:  0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg:  0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  --shadow-xl:  0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+  --shadow-focus: 0 0 0 3px rgb(31 160 144 / 0.35);  /* accent ring */
+
+
+  /* ─── Motion ────────────────────────────────────────── */
+
+  --duration-fast:   100ms;
+  --duration-normal: 200ms;
+  --duration-slow:   400ms;
+  --ease-default:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in:         cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:        cubic-bezier(0, 0, 0.2, 1);
+
+
+  /* ─── Z-index ───────────────────────────────────────── */
+
+  --z-base:    0;
+  --z-raised:  10;
+  --z-overlay: 100;
+  --z-modal:   200;
+  --z-toast:   300;
+  --z-tooltip: 400;
+}
+
+
+/* ─── High-contrast / reduced-motion overrides ──────── */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast:   0ms;
+    --duration-normal: 0ms;
+    --duration-slow:   0ms;
+  }
+}
+
+@media (forced-colors: active) {
+  :root {
+    --color-border-focus: Highlight;
+    --shadow-focus: 0 0 0 3px Highlight;
+  }
+}
