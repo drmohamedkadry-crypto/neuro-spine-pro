@@ -1,0 +1,114 @@
+@import "tailwindcss";
+@import "../.design/public-funnel/tokens.css";
+
+/*
+  Tailwind v4 theme bridge — exposes all Midnight Glow tokens as utilities.
+  Using @theme inline so generated utilities reference the CSS custom properties
+  at runtime (enables CSS-based dark mode and theming without JS).
+*/
+@theme inline {
+
+  /* ── Navy palette ──────────────────────────────────── */
+  --color-navy-950: var(--color-navy-950);
+  --color-navy-900: var(--color-navy-900);
+  --color-navy-800: var(--color-navy-800);
+  --color-navy-700: var(--color-navy-700);
+  --color-navy-600: var(--color-navy-600);
+  --color-navy-500: var(--color-navy-500);
+  --color-navy-400: var(--color-navy-400);
+  --color-navy-300: var(--color-navy-300);
+  --color-navy-200: var(--color-navy-200);
+  --color-navy-100: var(--color-navy-100);
+  --color-navy-50:  var(--color-navy-50);
+
+  /* ── Teal palette ──────────────────────────────────── */
+  --color-teal-600: var(--color-teal-600);
+  --color-teal-500: var(--color-teal-500);
+  --color-teal-400: var(--color-teal-400);
+  --color-teal-300: var(--color-teal-300);
+  --color-teal-200: var(--color-teal-200);
+  --color-teal-100: var(--color-teal-100);
+  --color-teal-50:  var(--color-teal-50);
+
+  /* ── Cyan (glow — hero atmospheric only) ───────────── */
+  --color-cyan-500: var(--color-cyan-500);
+  --color-cyan-400: var(--color-cyan-400);
+
+  /* ── Neutral palette ───────────────────────────────── */
+  --color-neutral-950: var(--color-neutral-950);
+  --color-neutral-900: var(--color-neutral-900);
+  --color-neutral-800: var(--color-neutral-800);
+  --color-neutral-700: var(--color-neutral-700);
+  --color-neutral-600: var(--color-neutral-600);
+  --color-neutral-500: var(--color-neutral-500);
+  --color-neutral-400: var(--color-neutral-400);
+  --color-neutral-300: var(--color-neutral-300);
+  --color-neutral-200: var(--color-neutral-200);
+  --color-neutral-100: var(--color-neutral-100);
+  --color-neutral-50:  var(--color-neutral-50);
+  --color-neutral-0:   var(--color-neutral-0);
+
+  /* ── Semantic surface (bg-primary, bg-surface, …) ──── */
+  --color-primary:    var(--color-bg-primary);
+  --color-surface:    var(--color-bg-surface);
+  --color-subtle:     var(--color-bg-subtle);
+  --color-brand:      var(--color-bg-brand);
+  --color-accent:     var(--color-bg-accent);
+
+  /* ── Semantic status ───────────────────────────────── */
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error:   var(--color-error);
+
+  /* ── Font families ─────────────────────────────────── */
+  --font-display: var(--font-display);
+  --font-body:    var(--font-body);
+  --font-arabic:  var(--font-arabic);
+
+  /* ── Border radius ─────────────────────────────────── */
+  --radius-sm:   var(--radius-sm);
+  --radius-md:   var(--radius-md);
+  --radius-lg:   var(--radius-lg);
+  --radius-xl:   var(--radius-xl);
+  --radius-full: var(--radius-full);
+
+  /* ── Shadows ───────────────────────────────────────── */
+  --shadow-sm:    var(--shadow-sm);
+  --shadow-md:    var(--shadow-md);
+  --shadow-lg:    var(--shadow-lg);
+  --shadow-xl:    var(--shadow-xl);
+  --shadow-glow:  var(--shadow-glow);
+  --shadow-focus: var(--shadow-focus);
+}
+
+/* Base resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+}
+
+/* RTL base — Arabic pages set dir="rtl" on <html> */
+[dir="rtl"] {
+  font-family: var(--font-arabic);
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
